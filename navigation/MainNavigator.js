@@ -29,9 +29,7 @@ const defaultStackNav = {
 const defaultTopTab = {
   activeTintColor: Colors.primary,
   inactiveTintColor: Colors.inactiveIcon,
-  indicatorStyle: {
-    color: Colors.primary,
-  },
+  indicatorStyle: { backgroundColor: Colors.primary },
   showIcon: true,
   showLabel: false,
   style: {
