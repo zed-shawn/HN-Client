@@ -3,7 +3,7 @@ import { enableScreens } from "react-native-screens";
 import { Provider } from "react-redux";
 import * as Font from "expo-font";
 //import store from "./store/store";
-//import link from "./components/connections/api";
+import * as link from "./components/connections/apliLinks";
 import CheckConnectivity from "./components/connections/CheckConnectivity";
 
 import MainNavigator from "./navigation/MainNavigator";
@@ -16,23 +16,18 @@ function App() {
   // const dispatch = useDispatch();
   const [fontLoaded, setFontLoaded] = useState(false);
 
-  /* async function loadClientDetails() {
+  async function loadIDs() {
     // Checks for net connectivity, calls api, if successful -> passes onto state. Throws error otherwise.
     const netStatus = await CheckConnectivity();
     if (netStatus) {
-      let response = await fetch(link);
+      let response = await fetch(link.bestStories);
       let data = await response.json();
-      if (data.status == true) {
-        dispatchUserDetails(data);
-      } else {
-        Alert.alert(
-          "Error retrieving data",
-          "Please contact the administrator.",
-          [{ text: "Cool", style: "cancel", onPress: () => {} }]
-        );
-      }
+      const newLink = link.itemDetail + `${data[0]}` + ".json";
+      let response1 = await fetch(newLink);
+      let data1 = await response1.json();
+      console.log(data1);
     }
-  } */
+  }
 
   async function loadFonts() {
     //Loads custom fonts
@@ -46,7 +41,7 @@ function App() {
   //useEffect(() => {
   // Runs at startup to call the loading functions
   loadFonts();
-  // loadClientDetails();
+  loadIDs();
   //}, []);
 
   /* const dispatchUserDetails = useCallback(
