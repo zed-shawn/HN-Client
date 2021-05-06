@@ -16,7 +16,6 @@ const vs = Scale.verticalScale;
 export default function ListTile(props) {
   const dispatch = useDispatch();
   const readIDs = useSelector((state) => state.read.readIDs);
-  console.log(readIDs);
 
   const username = props.username;
   const title = props.title;

@@ -15,6 +15,7 @@ const BestScreen = () => {
   const [loaded, setLoaded] = useState(false);
 
   const bestIDs = useSelector((state) => state.data.bestIDs);
+  const readIDs = useSelector((state) => state.read.readIDs);
 
   const dispatchBestLinks = useCallback(
     (data) => {
@@ -74,6 +75,7 @@ const BestScreen = () => {
           windowSize={10}
           onRefresh={onRefresh}
           refreshing={!loaded}
+          extraData={readIDs}
         />
       ) : (
         <View style={styles.loadingView}>

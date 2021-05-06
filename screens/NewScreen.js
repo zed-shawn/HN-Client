@@ -15,6 +15,7 @@ const NewScreen = () => {
   const [loaded, setLoaded] = useState(false);
 
   const newIDs = useSelector((state) => state.data.newIDs);
+  const readIDs = useSelector((state) => state.read.readIDs);
 
   const dispatchNewLinks = useCallback(
     (data) => {
@@ -75,6 +76,7 @@ const NewScreen = () => {
           windowSize={10}
           onRefresh={onRefresh}
           refreshing={!loaded}
+          extraData={readIDs}
         />
       ) : (
         <View style={styles.loadingView}>
