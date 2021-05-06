@@ -1,6 +1,7 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { Entypo, FontAwesome } from "@expo/vector-icons";
+import Colors from "../../constants/Colors";
 
 export default function Stat(props) {
   return (
@@ -31,7 +32,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   childText: {
-    color: "white",
+    color: Colors.unreadText,
     marginHorizontal: 5,
   },
 });

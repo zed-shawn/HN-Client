@@ -33,6 +33,11 @@ const NewScreen = () => {
     }
   }
 
+  const onRefresh = () => {
+    setLoaded(false);
+    loadNewIDs();
+  };
+
   useEffect(() => {
     loadNewIDs();
   }, []);
@@ -53,6 +58,7 @@ const NewScreen = () => {
         upvotes={data.upvotes}
         url={data.url}
         comments={data.comments}
+        id={data.key}
       />
     );
   };
@@ -67,6 +73,8 @@ const NewScreen = () => {
           initialNumToRender={10}
           maxToRenderPerBatch={10}
           windowSize={10}
+          onRefresh={onRefresh}
+          refreshing={!loaded}
         />
       ) : (
         <View style={styles.loadingView}>

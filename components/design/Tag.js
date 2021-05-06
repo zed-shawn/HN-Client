@@ -1,5 +1,6 @@
 import React from "react";
 import { View, Text } from "react-native";
+import Colors from "../../constants/Colors";
 
 export default function Tag(props) {
   return (
@@ -14,7 +15,7 @@ export default function Tag(props) {
         justifyContent: "center",
       }}
     >
-      <Text style={{ color: "white" }}>{props.type}</Text>
+      <Text style={{ color: Colors.unreadText }}>{props.type}</Text>
     </View>
   );
 }

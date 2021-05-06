@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "HN-NewsDemo",
+    "name": "HackerNews",
     "slug": "HN-NewsDemo",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -13,17 +13,13 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
     },
     "android": {
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#FFFFFF"
-      }
+      "package": "com.demo.hnClient",
+      "versionCode": 1
     },
     "web": {
       "favicon": "./assets/favicon.png"

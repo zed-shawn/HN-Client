@@ -32,6 +32,10 @@ const BestScreen = () => {
       dispatchBestLinks(data);
     }
   }
+  const onRefresh = () => {
+    setLoaded(false);
+    loadBestIDs();
+  };
 
   useEffect(() => {
     loadBestIDs();
@@ -53,6 +57,7 @@ const BestScreen = () => {
         upvotes={data.upvotes}
         url={data.url}
         comments={data.comments}
+        id={data.key}
       />
     );
   };
@@ -67,6 +72,8 @@ const BestScreen = () => {
           initialNumToRender={10}
           maxToRenderPerBatch={10}
           windowSize={10}
+          onRefresh={onRefresh}
+          refreshing={!loaded}
         />
       ) : (
         <View style={styles.loadingView}>
