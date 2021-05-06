@@ -2,6 +2,7 @@ import React, { useEffect, useCallback, useState } from "react";
 import { StyleSheet, View, Text, FlatList } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import CheckConnectivity from "../components/connections/CheckConnectivity";
+import { Fontisto } from "@expo/vector-icons";
 
 import * as link from "../components/connections/apliLinks";
 import * as dataActions from "../store/dataStore";
@@ -35,6 +36,11 @@ const BestScreen = () => {
   useEffect(() => {
     loadBestIDs();
   }, []);
+  useEffect(() => {
+    if (bestIDs.length > 7) {
+      setLoaded(true);
+    }
+  }, [bestIDs]);
 
   const renderItems = (itemData) => {
     const data = itemData.item;
@@ -53,14 +59,30 @@ const BestScreen = () => {
 
   return (
     <View style={styles.root}>
-      <FlatList
-        renderItem={renderItems}
-        data={bestIDs}
-        keyExtractor={(item) => item.key.toString()}
-        initialNumToRender={10}
-        maxToRenderPerBatch={10}
-        windowSize={10}
-      />
+      {loaded ? (
+        <FlatList
+          renderItem={renderItems}
+          data={bestIDs}
+          keyExtractor={(item) => item.key.toString()}
+          initialNumToRender={10}
+          maxToRenderPerBatch={10}
+          windowSize={10}
+        />
+      ) : (
+        <View style={styles.loadingView}>
+          <Fontisto name="hacker-news" size={40} color="white" />
+          <Text
+            style={{
+              fontFamily: "CircItalic",
+              color: "white",
+              fontSize: 18,
+              marginTop: 20,
+            }}
+          >
+            Loading...
+          </Text>
+        </View>
+      )}
     </View>
   );
 };
@@ -69,6 +91,11 @@ const styles = StyleSheet.create({
   root: {
     flex: 1,
     backgroundColor: Colors.background,
+  },
+  loadingView: {
+    alignItems: "center",
+    justifyContent: "center",
+    flex: 1,
   },
 });
 

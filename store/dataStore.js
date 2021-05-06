@@ -33,7 +33,6 @@ export function addBestIDs(data) {
       let diff = 0;
       const bestIDObj = [];
       for (let i = 0; i < data.length; i++) {
-        console.log(i);
         const obj = await getDetail(data[i]);
         bestIDObj.push(obj);
         diff++;
@@ -49,13 +48,23 @@ export function addBestIDs(data) {
     }
   };
 }
+
 export function addTopIDs(data) {
   return async (dispatch) => {
     try {
-      dispatch({
-        type: ADD_TOP_IDS,
-        payload: { data },
-      });
+      let diff = 0;
+      const topIDObj = [];
+      for (let i = 0; i < data.length; i++) {
+        const obj = await getDetail(data[i]);
+        topIDObj.push(obj);
+        diff++;
+        if (diff > 7) {
+          dispatch({
+            type: ADD_TOP_IDS,
+            payload: { topIDObj },
+          });
+        }
+      }
     } catch (error) {
       console.log(error);
     }
@@ -64,10 +73,19 @@ export function addTopIDs(data) {
 export function addNewIDs(data) {
   return async (dispatch) => {
     try {
-      dispatch({
-        type: ADD_NEW_IDS,
-        payload: { data },
-      });
+      let diff = 0;
+      const newIDObj = [];
+      for (let i = 0; i < data.length; i++) {
+        const obj = await getDetail(data[i]);
+        newIDObj.push(obj);
+        diff++;
+        if (diff > 7) {
+          dispatch({
+            type: ADD_NEW_IDS,
+            payload: { newIDObj },
+          });
+        }
+      }
     } catch (error) {
       console.log(error);
     }
@@ -84,12 +102,12 @@ const dataReducer = (state = initialState, action) => {
     case ADD_TOP_IDS:
       return {
         ...state,
-        topIDs: action.payload.data,
+        topIDs: action.payload.topIDObj,
       };
     case ADD_NEW_IDS:
       return {
         ...state,
-        newIDs: action.payload.data,
+        newIDs: action.payload.newIDObj,
       };
     default:
       return state;
