@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text } from "react-native";
 
-export default function Tag() {
+export default function Tag(props) {
   return (
     <View
       style={{
@@ -14,7 +14,7 @@ export default function Tag() {
         justifyContent: "center",
       }}
     >
-      <Text style={{ color: "white" }}>Post</Text>
+      <Text style={{ color: "white" }}>{props.type}</Text>
     </View>
   );
 }

@@ -2,16 +2,16 @@ import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { Entypo, FontAwesome } from "@expo/vector-icons";
 
-export default function Stat() {
+export default function Stat(props) {
   return (
     <View style={styles.root}>
       <View style={styles.child}>
         <Entypo name="arrow-up" size={24} color="white" />
-        <Text style={styles.childText}>32</Text>
+        <Text style={styles.childText}>{props.upvotes}</Text>
       </View>
       <View style={styles.child}>
         <FontAwesome name="comments" size={24} color="white" />
-        <Text style={styles.childText}>32</Text>
+        <Text style={styles.childText}>{props.comments}</Text>
       </View>
     </View>
   );
@@ -19,7 +19,7 @@ export default function Stat() {
 
 const styles = StyleSheet.create({
   root: {
-    width: "30%",
+    width: "40%",
     alignItems: "center",
     height: "90%",
     justifyContent: "space-between",

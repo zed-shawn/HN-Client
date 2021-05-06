@@ -44,22 +44,22 @@ const defaultTopTab = {
 const TopTabNavigator = createMaterialTopTabNavigator();
 export const TopTab = () => {
   return (
-    <TopTabNavigator.Navigator tabBarOptions={defaultTopTab}>
-      <TopTabNavigator.Screen
-        name="Top"
-        component={TopScreen}
-        options={{
-          tabBarIcon: ({ color, focused }) => {
-            return focused ? prop.activeTabTop : prop.inactiveTabTop;
-          },
-        }}
-      />
+    <TopTabNavigator.Navigator tabBarOptions={defaultTopTab} lazy={true}>
       <TopTabNavigator.Screen
         name="Best"
         component={BestScreen}
         options={{
           tabBarIcon: ({ color, focused }) => {
             return focused ? prop.activeTabBest : prop.inactiveTabBest;
+          },
+        }}
+      />
+      <TopTabNavigator.Screen
+        name="Top"
+        component={TopScreen}
+        options={{
+          tabBarIcon: ({ color, focused }) => {
+            return focused ? prop.activeTabTop : prop.inactiveTabTop;
           },
         }}
       />
